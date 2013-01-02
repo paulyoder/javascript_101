@@ -1,0 +1,2 @@
+myName = 'Paul';
+log(myName);
