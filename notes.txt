@@ -1,0 +1,51 @@
+JavaScript Presentation
+
+- Variables
+  - scope
+  - global variables
+    - example
+
+- Global Variables
+  - Example of plugin overwriting your function
+  - namespacing
+- order of javascript files
+- variables
+  - var
+  - hoisting
+  - scope
+    - global
+    - function
+    - not block
+- objects
+  - object literals
+- prototypes
+  - prototypal inheritance vs classical inheritance
+    - bad use
+      Constructor = function(whatToSay) {
+        this.whatToSay = whatToSay;
+        this.Main = function() {
+          console.log(this.whatToSay);
+        };
+      };
+    - good use
+      Constructor = funciton(whatToSay) {
+        this.whatToSay = whatToSay;
+      };
+
+      Constructor.prototype.Main = function() {
+        console.log(this.whatToSay);
+      };
+- equality
+- context
+- closures
+- extends
+  - base types through prototypal inheritance
+- functions
+  - immediately invoking function
+    - revealing module pattern
+      - private variables
+  - module pattern
+  - constructor functions
+  - all functions have a .prototype that instances inherit from
+- loops
+  - for in vs for
