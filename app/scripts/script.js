@@ -1,2 +1,0 @@
-myName = 'Paul';
-log(myName);

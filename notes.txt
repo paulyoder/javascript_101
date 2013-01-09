@@ -1,9 +1,21 @@
 JavaScript Presentation
 
+Titles
+  - Getting out of the boat with JavaScript
+  - Learn how to fly with JavaScript
+  - Breaking the bonds with JavaScript
+
+JavaScript Traps (get better name)
+  - creating global variables
+
 - Variables
   - scope
   - global variables
+    - global window object
     - example
+  - undefined
+    - difference between undefined and null reference exception
+
 
 - Global Variables
   - Example of plugin overwriting your function
@@ -49,3 +61,18 @@ JavaScript Presentation
   - all functions have a .prototype that instances inherit from
 - loops
   - for in vs for
+
+- TypeScript
+  - still in preview. Microsoft does not recommend it for production systems
+  - places unneeded restraints on JavaScript
+    - like clipping a birds wings
+  - static languages only provide 1 additional unit test: compiling
+    - just because it's static doesn't mean you won't have errors
+      - else all our c# code would not have any bugs in it
+  - you can't debug in TypeScript
+    - Modules in TypeScript are a little different than modules in JavaScript
+  - type safety is overrated
+    - can anyone write a letter to your mom without using a spell checker?
+    - it's easy to fix the code when it's missing a property
+      - the long and hard debugging are not as a result of lack of type safety
+

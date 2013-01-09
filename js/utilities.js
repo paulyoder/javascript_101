@@ -1,5 +1,9 @@
 function log(message) {
-  document.write(message);
+  $(function() {
+    $('body').append(message + '<br />').
+      effect('highlight', { color: 'yellow'} , 1000);
+      
+  });
 }
 
 function globalVariableCount() {
