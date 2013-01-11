@@ -1,12 +1,19 @@
 JavaScript Presentation
 
 Titles
-  - Getting out of the boat with JavaScript
-  - Learn how to fly with JavaScript
-  - Breaking the bonds with JavaScript
+  - JavaScript is not C#
 
-JavaScript Traps (get better name)
+JavaScript Nuances
   - creating global variables
+
+- undefined vs null
+- Variables
+  - scope
+  - var and global variables  
+  - not scoped to a block
+  - hoisting
+
+
 
 - Variables
   - scope

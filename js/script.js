@@ -1,2 +1,5 @@
-var firstName = 'Paul';
-log(firstName);
+function someFunction() {
+  var firstName;
+  log(firstName);
+}
+someFunction();

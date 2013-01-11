@@ -1,0 +1,85 @@
+UNDEFINED != NULL
+
+  var firstName = 'Paul';
+  log(firstName);
+
+BASIC FUNCTION
+
+  function someFunction() {
+    log('hello');
+  }
+  someFunction();
+
+VARIABLE SCOPE
+
+  function someFunction() {
+    var firstName = 'Paul';
+    log(firstName);
+  }
+  someFunction();
+
+  --
+
+  function someFunction() {
+    var firstName = 'Paul';
+    log(firstName);
+  }
+  someFunction();
+  log(firstName);
+
+  --
+
+  var firstName = 'Sara';
+  function someFunction() {
+    var firstName = 'Paul';
+    log(firstName);
+  }
+  someFunction();
+  log(firstName);
+
+
+GLOBAL VARIABLES
+
+  var firstName = 'Sara';
+  function someFunction() {
+    firstName = 'Paul';
+    log(firstName);
+  }
+  someFunction();
+  log(firstName);
+
+  --
+
+  function someFunction() {
+    firstName = 'Paul';
+    log(firstName);
+  }
+  someFunction();
+  log(firstName);
+
+
+NOT SCOPED TO A BLOCK
+
+  function someFunction() {
+    if (true) {
+      var firstName = 'Paul';
+      log(firstName);
+    }
+    log(firstName);
+  }
+  someFunction();
+
+HOISTING
+
+  function someFunction() {
+    log(firstName);
+  }
+  someFunction();
+
+  ---
+
+  function someFunction() {
+    log(firstName);
+    var firstName;
+  }
+  someFunction();
