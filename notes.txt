@@ -4,37 +4,27 @@ Titles
   - JavaScript is not C#
 
 JavaScript Nuances
-  - creating global variables
 
 - undefined vs null
-- Variables
+- variables
   - scope
   - var and global variables  
   - not scoped to a block
   - hoisting
+- equality
+  - == vs ===
+  - only use == when looking for null or undefined
+- objects
+  - defining objects
+    - new Object()
+    - object literal
 
 
-
-- Variables
-  - scope
-  - global variables
-    - global window object
-    - example
-  - undefined
-    - difference between undefined and null reference exception
 
 
 - Global Variables
-  - Example of plugin overwriting your function
   - namespacing
 - order of javascript files
-- variables
-  - var
-  - hoisting
-  - scope
-    - global
-    - function
-    - not block
 - objects
   - object literals
 - prototypes
@@ -54,12 +44,11 @@ JavaScript Nuances
       Constructor.prototype.Main = function() {
         console.log(this.whatToSay);
       };
-- equality
 - context
-- closures
 - extends
   - base types through prototypal inheritance
 - functions
+  - closures
   - immediately invoking function
     - revealing module pattern
       - private variables
@@ -68,6 +57,7 @@ JavaScript Nuances
   - all functions have a .prototype that instances inherit from
 - loops
   - for in vs for
+  - why cache array length
 
 - TypeScript
   - still in preview. Microsoft does not recommend it for production systems

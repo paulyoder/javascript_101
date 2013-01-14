@@ -83,3 +83,97 @@ HOISTING
     var firstName;
   }
   someFunction();
+
+EQUALITY
+
+  var a = 0;
+  if (a == 0) {
+    log('equal');
+  } else {
+    log('not equal');
+  }
+
+  ---
+
+  var a = 0;
+  if (a == false) {
+    log('equal');
+  } else {
+    log('not equal');
+  }
+
+  ---
+
+  var a = 1;
+  if (a == 1) {
+    log('equal');
+  } else {
+    log('not equal');
+  }
+
+  ---
+
+  var a = 1;
+  if (a == '1') {
+    log('equal');
+  } else {
+    log('not equal');
+  }
+
+  ---
+
+  var a = 1;
+  if (a === '1') {
+    log('equal');
+  } else {
+    log('not equal');
+  }
+
+  ---
+
+  var a = 0;
+  if (a === false) {
+    log('equal');
+  } else {
+    log('not equal');
+  }
+
+EQUALITY FOR NULL OR UNDEFINED
+
+  var a;
+  if (a === null || a === undefined) {
+    log('a is null or undefined');
+  }
+
+  ---
+
+  var a = null;
+  if (a === null || a === undefined) {
+    log('a is null or undefined');
+  }
+
+  ---
+
+  var a;
+  if (a == null) {
+    log('a is null or undefined');
+  }
+
+  ---
+
+  var a = null;
+  if (a == null) {
+    log('a is null or undefined');
+  }
+  
+DEFINING OBJECTS - NEW OBJECT
+
+  var a = new Object();
+  log(a);
+
+  ---
+
+  var a = new Object();
+  a.firstName = 'Paul';
+  a.lastName = 'Yoder';
+  log(a);
