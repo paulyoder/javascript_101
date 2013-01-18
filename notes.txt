@@ -6,6 +6,7 @@ Titles
 JavaScript Nuances
 
 - undefined vs null
+- basic function
 - variables
   - scope
   - var and global variables  
@@ -14,19 +15,28 @@ JavaScript Nuances
 - equality
   - == vs ===
   - only use == when looking for null or undefined
+- loops
+  - cache array length
 - objects
-  - defining objects
-    - new Object()
-    - object literal
-
+  - defining a blank object
+  - dynamic properties
+  - object literal
+  - namespacing
+- functions
+  - anonymous function
+  - return function
+  - callbacks
+  - closures
+  - immediate functions
+  - revealing module pattern
+- custom objects
+  - context and new
+  - context and callbacks
 
 
 
 - Global Variables
   - namespacing
-- order of javascript files
-- objects
-  - object literals
 - prototypes
   - prototypal inheritance vs classical inheritance
     - bad use
@@ -48,16 +58,9 @@ JavaScript Nuances
 - extends
   - base types through prototypal inheritance
 - functions
-  - closures
-  - immediately invoking function
-    - revealing module pattern
-      - private variables
   - module pattern
   - constructor functions
   - all functions have a .prototype that instances inherit from
-- loops
-  - for in vs for
-  - why cache array length
 
 - TypeScript
   - still in preview. Microsoft does not recommend it for production systems

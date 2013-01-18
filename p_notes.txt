@@ -84,6 +84,14 @@ HOISTING
   }
   someFunction();
 
+  ---
+
+  function someFunction() {
+    log(firstName);
+    var firstName = 'Paul';
+  }
+  someFunction();
+
 EQUALITY
 
   var a = 0;
@@ -165,15 +173,331 @@ EQUALITY FOR NULL OR UNDEFINED
   if (a == null) {
     log('a is null or undefined');
   }
-  
-DEFINING OBJECTS - NEW OBJECT
 
-  var a = new Object();
-  log(a);
+LOOPS
+
+  var names = ['Paul', 'Sara', 'John'];
+  for (i = 0; i < names.length; i++) {
+    log(names[i]);
+  }
 
   ---
 
-  var a = new Object();
+  var names = ['Paul', 'Sara', 'John'];
+  var length = names.length;
+  for (i = 0; i < length; i++) {
+    log(names[i]);
+  }
+  
+  ---
+
+  var names = ['Paul', 'Sara', 'John'];
+  for (i = 0, length = names.length; i < length; i++) {
+    log(names[i]);
+  }
+
+DEFINING AN OBJECT
+
+  var a = {};
+  log(a);
+
+DYNAMIC PROPERTIES
+
+  var a = {};
   a.firstName = 'Paul';
   a.lastName = 'Yoder';
   log(a);
+
+OBJECT LITERAL
+
+  var a = {
+    firstName: 'Paul',
+    lastName: 'Yoder'
+  };
+  log(a);
+
+  a.city = 'Omaha';
+  log(a);
+
+NAMESPACING
+
+  var someFunction = function() {
+    log('hello');
+  }
+  someFunction();
+
+  ---
+
+  var App = {};
+  App.utils.someFunction = function() {
+    log('hello');
+  }
+  App.utils.someFunction();
+
+  ---
+
+  var App = {};
+  App.utils = {};
+  App.utils.someFunction = function() {
+    log('hello');
+  }
+  App.utils.someFunction();
+
+ANONYMOUS FUNCTION
+
+  var a = function() {
+    log('hello');
+  };
+  a();
+
+FUNCTION RETURNS FUNCTION
+
+  function returnAFunction() {
+    return function() {
+      log('hello');
+    };
+  }
+  var returnedFunction = returnAFunction();
+
+  ---
+
+  function returnAFunction() {
+    return function() {
+      log('hello');
+    };
+  }
+  var returnedFunction = returnAFunction();
+  returnedFunction();
+
+CALLBACKS
+
+  function callMe(callback) {
+    callback();
+  }
+
+  function saySomething() {
+    log('hello');
+  }
+
+  callMe(saySomething);
+
+  ---
+
+  function callMe(callback) {
+    callback();
+  }
+
+  callMe(function() {
+    log('hello');
+  });
+
+  ---
+
+  function callMe(callback) {
+    if (callback() === true) {
+      log('its true!');
+    } else {
+      log('its false!');
+    }
+  }
+
+  callMe(function() {
+    return true;
+  });
+
+CLOSURES
+
+  function returnAFunction() {
+    return function() {
+      log(new Date());
+    };
+  }
+  var returnedFunction = returnAFunction();
+  returnedFunction();
+  wait(1.5, returnedFunction);
+
+  ---
+
+  function returnAFunction() {
+    var date = new Date();
+    return function() {
+      log(date);
+    };
+  }
+  var returnedFunction = returnAFunction();
+  returnedFunction();
+  wait(1.5, returnedFunction);
+
+IMMEDIATE FUNCTIONS
+
+  var dateNow = function() {
+    return new Date();
+  };
+
+  if (typeof(dateNow) === 'function') {
+    log("It's a function!");
+  } else {
+    log("It's NOT a function!");
+  }
+
+  ---
+
+  var dateNow = function() {
+    return new Date();
+  }();
+
+  if (typeof(dateNow) === 'function') {
+    log("It's a function!");
+  } else {
+    log("It's NOT a function!");
+  }
+
+  ---
+
+  var dateNow = (function() {
+    var date = new Date();
+    return function() {
+      log(date);
+    }
+  })();
+
+  dateNow();
+  wait(1.5, dateNow);
+
+REVEALING MODULE PATTERN
+
+  var dateNow = (function() {
+    var date = new Date();
+    return {
+      seconds: date.getSeconds()
+    }
+  })();
+
+  log(dateNow);
+  
+  ---
+
+  var dateNow = (function() {
+    var date = new Date();
+    return {
+      seconds: date.getSeconds()
+      millisecondsSince: function() {
+        var diffTime = new Date().getTime() - date.getTime();
+        log(diffTime);
+      }
+    }
+  })();
+
+  log(dateNow);
+
+  --- 
+
+  var dateNow = (function() {
+    var date = new Date();
+    return {
+      seconds: date.getSeconds()
+      millisecondsSince: function() {
+        var diffTime = new Date().getTime() - date.getTime();
+        log(diffTime);
+      }
+    }
+  })();
+
+  log(dateNow)
+  dateNow.millsecondsSince();
+  wait(1.5, dateNow.millsecondsSince);
+
+CONTEXT AND NEW
+
+  log(this);
+
+  ---
+
+  firstName = 'Paul';
+  log(this);
+
+  ---
+
+  var Person = function() {
+  }
+  var me = new Person();
+  log(me);
+
+  ---
+
+  var Person = function() {
+  }
+  var me = new Person();
+  me.firstName = 'Paul';
+  log(me);
+
+  ---
+
+  var Person = function(firstName) {
+    this.firstName = firstName;
+  }
+  var me = new Person('Paul');
+  log(me);
+
+    CALLED OBJECT CONSTRUCTOR
+
+  var Person = function(name) {
+    this.firstName = name;
+    this.sayHi = function() {
+      log(this.firstName + ' says hi!');
+    };
+  }
+  var me = new Person('Paul');
+  me.sayHi();
+  var george = new Person('George');
+  george.sayHi();
+
+CONTEXT AND CALLBACKS
+
+  var Person = function(name) {
+    this.firstName = name;
+    this.sayYourName = function() {
+      log('my name is ' + this.firstName);
+    };
+  }
+  var me = new Person('Paul');
+  me.sayYourName();
+
+  ---
+
+  var findLastName = function(firstName, callback) {
+    var lastName = 'Yoder';
+    callback(lastName); 
+  }
+
+  var Person = function(name) {
+    this.firstName = name;
+    this.sayYourName = function() {
+      findLastName(this.firstName, function(lastName) {
+        log('my name is ' + this.firstName + ' ' + lastName);
+      });
+    };
+  }
+
+  var me = new Person('Paul');
+  me.sayYourName();
+
+  ---
+
+  var findLastName = function(firstName, callback) {
+    var lastName = 'Yoder';
+    callback(lastName); 
+  }
+
+  var Person = function(name) {
+    this.firstName = name;
+    this.sayYourName = function() {
+      var self = this;
+      findLastName(this.firstName, function(lastName) {
+        log('my name is ' + self.firstName + ' ' + lastName);
+      });
+    };
+  }
+
+  var me = new Person('Paul');
+  me.sayYourName();
