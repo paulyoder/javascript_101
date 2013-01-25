@@ -5,10 +5,15 @@ Titles
 
 JavaScript Nuances
 
+- semicolons
+  - always use because
+    - sometimes engine guesses wrong
+    - minification
 - undefined vs null
 - basic function
 - variables
   - scope
+    - not to code blocks or brackets
   - var and global variables  
   - not scoped to a block
   - hoisting
@@ -17,6 +22,8 @@ JavaScript Nuances
   - only use == when looking for null or undefined
 - loops
   - cache array length
+    - http://jsperf.com/caching-array-length-in-loop
+    - http://jsperf.com/caching-jquery-selector-length-in-loop
 - objects
   - defining a blank object
   - dynamic properties

@@ -1,6 +1,24 @@
+SEMICOLONS
+
+  log('JavaScript is not C#');
+
+  --
+
+  log('JavaScript is not C#')
+
 UNDEFINED != NULL
 
   var firstName = 'Paul';
+  log(firstName);
+
+  ---
+
+  var firstName = null;
+  log(firstName);
+
+  ---
+
+  var firstName;
   log(firstName);
 
 BASIC FUNCTION
