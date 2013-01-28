@@ -76,7 +76,7 @@ GLOBAL VARIABLES
   log(firstName);
 
 
-NOT SCOPED TO A BLOCK
+NOT SCOPED TO A BLOCK (or brackets)
 
   function someFunction() {
     if (true) {
@@ -226,6 +226,20 @@ DYNAMIC PROPERTIES
   a.lastName = 'Yoder';
   log(a);
 
+  ---
+
+  var a = {};
+  a['firstName'] = 'Paul';
+  a['lastName'] = 'Yoder';
+  log(a);
+
+  ---
+
+  var a = {};
+  var firstNameProp = 'firstName';
+  a['firstName'] = 'Paul';
+  log(a[firstNameProp]);
+
 OBJECT LITERAL
 
   var a = {
@@ -254,7 +268,15 @@ NAMESPACING
 
   ---
 
-  var App = {};
+  var App = App || {};
+  App.utils.someFunction = function() {
+    log('hello');
+  }
+  App.utils.someFunction();
+
+  ---
+
+  var App = App || {};
   App.utils = {};
   App.utils.someFunction = function() {
     log('hello');
