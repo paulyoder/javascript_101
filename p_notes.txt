@@ -496,12 +496,12 @@ CONTEXT AND CALLBACKS
 
   var Person = function(name) {
     this.firstName = name;
-    this.sayYourName = function() {
-      log('my name is ' + this.firstName);
+    this.sayName = function() {
+      log(this.firstName);
     };
   }
   var me = new Person('Paul');
-  me.sayYourName();
+  me.sayName();
 
   ---
 
@@ -512,15 +512,16 @@ CONTEXT AND CALLBACKS
 
   var Person = function(name) {
     this.firstName = name;
-    this.sayYourName = function() {
-      findLastName(this.firstName, function(lastName) {
-        log('my name is ' + this.firstName + ' ' + lastName);
-      });
+    this.sayFullName = function() {
+      var callback = function(lastName) {
+        log(self.firstName + ' ' + lastName);
+      };
+      findLastName(this.firstName, callback);
     };
   }
 
   var me = new Person('Paul');
-  me.sayYourName();
+  me.sayFullName();
 
   ---
 
@@ -531,13 +532,14 @@ CONTEXT AND CALLBACKS
 
   var Person = function(name) {
     this.firstName = name;
-    this.sayYourName = function() {
+    this.sayFullName = function() {
       var self = this;
-      findLastName(this.firstName, function(lastName) {
-        log('my name is ' + self.firstName + ' ' + lastName);
-      });
+      var callback = function(lastName) {
+        log(self.firstName + ' ' + lastName);
+      };
+      findLastName(this.firstName, callback);
     };
   }
 
   var me = new Person('Paul');
-  me.sayYourName();
+  me.sayFullName();
