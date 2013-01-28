@@ -505,7 +505,7 @@ CONTEXT AND CALLBACKS
 
   ---
 
-  var findLastName = function(firstName, callback) {
+  function findLastName(firstName, callback) {
     var lastName = 'Yoder';
     callback(lastName); 
   }
@@ -524,7 +524,7 @@ CONTEXT AND CALLBACKS
 
   ---
 
-  var findLastName = function(firstName, callback) {
+  function findLastName(firstName, callback) {
     var lastName = 'Yoder';
     callback(lastName); 
   }
