@@ -505,23 +505,18 @@ CONTEXT AND CALLBACKS
 
   ---
 
-  function findLastName(firstName, callback) {
-    var lastName = 'Yoder';
-    callback(lastName); 
-  }
-
   var Person = function(name) {
     this.firstName = name;
-    this.sayFullName = function() {
-      var callback = function(lastName) {
-        log(self.firstName + ' ' + lastName);
-      };
-      findLastName(this.firstName, callback);
+    this.sayFullName = function(lastName) {
+      log(this.firstName + ' ' + lastName);
+    };
+    this.getLastName = function() {
+      var lastName = 'Yoder';
+      this.sayFullName(lastName);
     };
   }
-
   var me = new Person('Paul');
-  me.sayFullName();
+  me.getLastName();
 
   ---
 
@@ -532,14 +527,32 @@ CONTEXT AND CALLBACKS
 
   var Person = function(name) {
     this.firstName = name;
-    this.sayFullName = function() {
-      var self = this;
-      var callback = function(lastName) {
-        log(self.firstName + ' ' + lastName);
-      };
-      findLastName(this.firstName, callback);
+    this.sayFullName = function(lastName) {
+      log(this.firstName + ' ' + lastName);
+    };
+    this.getLastName = function() {
+      findLastName(this.firstName, this.sayFullName);
     };
   }
-
   var me = new Person('Paul');
-  me.sayFullName();
+  me.getLastName();
+
+  ---
+
+  function findLastName(firstName, callback) {
+    var lastName = 'Yoder';
+    callback(lastName); 
+  }
+
+  var Person = function(name) {
+    this.firstName = name;
+    var self = this;
+    this.sayFullName = function(lastName) {
+      log(self.firstName + ' ' + lastName);
+    };
+    this.getLastName = function() {
+      findLastName(this.firstName, this.sayFullName);
+    };
+  }
+  var me = new Person('Paul');
+  me.getLastName();
